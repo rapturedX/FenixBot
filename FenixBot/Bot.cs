@@ -59,11 +59,8 @@ namespace FenixBot
                             await e.Channel.SendMessage(
                                 string.Format("Greetings {0}, I am Ad Lucem's Raid Attendance bot. You should only message me if you want to let the officers " +
                                               "know you'll be late, leave early, or miss a scheduled raid date. Please review our attendance document at: " +
-                                              "https://forum.adlucemguild.com/t/attendance-policy/23/1 ; based on the length of time between letting us know and " +
-                                              "the date of the raid, attendance history, and other factors we will determine if you are awarded a partial or full " +
-                                              "attendance point.", e.User.Name) + "\nNOTE: After successfully submitting an Attendance Notice, you will be provided with " +
-                                              "a unique URL that you can use to keep us updated if anything changes. You will need a forum account in order to make " +
-                                                "any updates. \n--------------------------------------------------\nWhat is your raiding toons name?");
+                                              "https://forum.adlucemguild.com/t/attendance-policy/23/1 for information concerning our attendance policy. ",
+                                               e.User.Name) + "\n--------------------------------------------------\nWhat is your raiding toons name?");
 
                             CacheHelper.Cache(key, region, new AttendanceCacheModel());
                         }
@@ -111,8 +108,7 @@ namespace FenixBot
                                     }
                                     else
                                     {
-                                        await e.Channel.SendMessage(string.Format("You can modify your attendance notice at: https://forum.adlucemguild.com/t/{0} .", 
-                                            response.Post.TopicId));
+                                        await e.Channel.SendMessage("Your Notice of Attendance Issue has been recorded and submitted to our team of officers, thank you.");
                                     }
 
                                     CacheHelper.Bust(key, region);
