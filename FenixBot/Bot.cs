@@ -97,7 +97,7 @@ namespace FenixBot
                                 {
                                     var response = _discourseApi.PostTopic(new NewTopic()
                                     {
-                                        Content = string.Format("Info: {0}\nDate:{1}\nPST Timestamp: {2}", attendanceResponses.AttendanceInfo, attendanceResponses.RaidDate, DateTime.UtcNow.AddHours(-8)),
+                                        Content = string.Format("Info: {0}\nDate:{1}\nPST Timestamp: {2}", attendanceResponses.AttendanceInfo, attendanceResponses.RaidDate, DateTime.UtcNow.AddHours(-7)),
                                         Title = string.Format("Attendance Issue for: {0} on {1}", attendanceResponses.CharacterName, attendanceResponses.RaidDate),
                                         CategoryID = _discourseCategoryId
                                     });
