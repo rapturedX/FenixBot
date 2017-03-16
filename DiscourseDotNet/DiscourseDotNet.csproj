@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{60C18637-B2F9-4300-AD32-4A302036D9A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DiscourseDotNet</RootNamespace>
+    <AssemblyName>DiscourseDotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DiscourseApi.cs" />
+    <Compile Include="DiscourseApiStatic.cs" />
+    <Compile Include="Extensions\User.cs" />
+    <Compile Include="Extensions\Categories.cs" />
+    <Compile Include="Extensions\Default.cs" />
+    <Compile Include="Extensions\Topics.cs" />
+    <Compile Include="Lib\PermissionEnums.cs" />
+    <Compile Include="Lib\ResultState.cs" />
+    <Compile Include="Request\APIRequest.cs" />
+    <Compile Include="DiscourseException.cs" />
+    <Compile Include="Request\NewCategory.cs" />
+    <Compile Include="Request\NewTopic.cs" />
+    <Compile Include="Request\UpdateEmail.cs" />
+    <Compile Include="Response\Get\GetCategoriesModel.cs" />
+    <Compile Include="Response\Get\GetUserModel.cs" />
+    <Compile Include="Response\Get\Models\Badge.cs" />
+    <Compile Include="Response\Get\Models\BadgeType.cs" />
+    <Compile Include="Response\Get\Models\BasicTopicInfo.cs" />
+    <Compile Include="Response\Get\Models\Category.cs" />
+    <Compile Include="Response\Get\Models\CategoryList.cs" />
+    <Compile Include="Response\Get\Models\FeaturedUser.cs" />
+    <Compile Include="Response\Get\Models\LastPoster.cs" />
+    <Compile Include="Response\Get\Models\Poster.cs" />
+    <Compile Include="Response\Get\Models\Stat.cs" />
+    <Compile Include="Response\Get\Models\Topic.cs" />
+    <Compile Include="Response\Get\Models\TopicList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\Get\Models\BasicUserInfo.cs" />
+    <Compile Include="Response\Get\Models\User.cs" />
+    <Compile Include="Response\Get\Models\UserBadge.cs" />
+    <Compile Include="Response\Get\SimilarTopicModel.cs" />
+    <Compile Include="Response\Post\CreatedCategory.cs" />
+    <Compile Include="Response\Post\CreatedTopic.cs" />
+    <Compile Include="Response\Post\Models\ActionsSummary.cs" />
+    <Compile Include="Response\Post\Models\Category.cs" />
+    <Compile Include="Response\Post\Models\GroupPermission.cs" />
+    <Compile Include="Response\Get\GetTopicsModel.cs" />
+    <Compile Include="Response\Post\Models\CreatedPost.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Response\Put\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
