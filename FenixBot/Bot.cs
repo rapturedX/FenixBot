@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using Discord;
 using DiscourseDotNet;
 using DiscourseDotNet.Extensions;
@@ -44,6 +45,19 @@ namespace FenixBot
 
         public void Init()
         {
+            _client.UserJoined += async (s, e) =>
+            {
+                var channel = await e.User.CreatePMChannel();
+                await channel.SendMessage(
+                    "Thank you for joining the Ad Lucem discord server; if you are a raid team member "
+                    + "please PM \"Crazzak\" to request access to our #raiding channel. "
+                    + "\nPUGs: Thank you for joining our discord server, you should have been provided with "
+                    + "an invite link / code that will give you temporary access to our #raiding channel. "
+                    + "If for some reason you are unable to join our raiding channel, please say so in "
+                    + "raid chat. "
+                    + "\nIf you'd like to learn more about Ad Lucem, please visit our website at: https://adlucemguild.com");
+            };
+
             _client.MessageReceived += async (s, e) =>
             {
                 if (!e.Message.IsAuthor)
@@ -140,18 +154,17 @@ namespace FenixBot
                                 // will be configurable later, adding nighthold heroic
                                 var lockouts = await _apiClient.ApiWarcraftGuildLockoutsByRealmByGuildByRaidIdGetAsync(_realm, _guild, 8025);
 
-                                var text = string.Empty;
-
-                                foreach (var lockedCharacter in lockouts.HeroicLockouts)
+                                if (lockouts.HeroicLockouts.Any())
                                 {
-                                    text += string.Format("*{0}*\n", lockedCharacter.Name);
-                                    text += string.Format("`{0}`\n", string.Join(", ", lockedCharacter.Bosses));
-                                }
+                                    await e.Channel.SendMessage("**SUMMARY OF HEROIC NIGHTHOLD LOCKOUTS**");
 
-                                if (!string.IsNullOrEmpty(text))
-                                {
-                                    text = "**SUMMARY OF HEROIC NIGHTHOLD LOCKOUTS**\n" + text;
-                                    await e.Channel.SendMessage(text);
+                                    foreach (var lockedCharacter in lockouts.HeroicLockouts)
+                                    {
+                                        var text = string.Format("*{0}*\n", lockedCharacter.Name);
+                                        text += string.Format("`{0}`\n", string.Join(", ", lockedCharacter.Bosses));
+
+                                        await e.Channel.SendMessage(text);
+                                    }
                                 }
                                 else
                                 {
