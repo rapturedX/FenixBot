@@ -10,7 +10,7 @@ namespace FenixBot
 {
     public sealed class Bot
     {
-        private static DiscordClient Client;
+        private static DiscordClient Client = new DiscordClient();
         private static readonly Bot BotInstance = new Bot();
         private static ConfigurationModel _configuration;
         private static AttendanceLogic _attendanceLogic;
