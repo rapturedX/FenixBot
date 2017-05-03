@@ -4,7 +4,7 @@
 // </auto-generated>
 //----------------------
 
-namespace FenixBot.Wrappers
+namespace FenixBot.Logic.Wrappers
 {
 #pragma warning disable // Disable all warnings
 

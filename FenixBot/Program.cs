@@ -10,8 +10,8 @@ namespace FenixBot
             {
                 try
                 {
-                        var bot = Bot.Instance();
-                        bot.Init();
+                    var bot = Bot.Instance();
+                    bot.Init();
                 }
                 catch (Exception e)
                 {
