@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FenixBot.Models.Attendance
+﻿namespace FenixBot.Models.Attendance
 {
     public class AttendanceCacheModel
     {
