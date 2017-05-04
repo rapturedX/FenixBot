@@ -1,4 +1,5 @@
 ﻿using System;
+using FenixBot.Helpers;
 
 namespace FenixBot
 {
@@ -6,6 +7,8 @@ namespace FenixBot
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(string.Format("FenixBot version {0} initialized", VersionHelper.GetFullAssemblyVersion()));
+
             while (true)
             {
                 try
