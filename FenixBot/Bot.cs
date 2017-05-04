@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Configuration;
+using System.Reflection;
 using Discord;
-using DiscourseDotNet.Request;
 using FenixBot.Helpers;
 using FenixBot.Logic;
-using FenixBot.Models.Attendance;
 
 namespace FenixBot
 {
@@ -45,7 +44,7 @@ namespace FenixBot
             Client.UserJoined += async (s, e) =>
             {
                 var channel = await e.User.CreatePMChannel();
-                await channel.SendMessage(string.Format(Configuration.Messages.WelcomeMessage, _configuration.GuildWebsite, _configuration.GuildRecruitmentURL));
+                await channel.SendMessage(string.Format(Configuration.Messages.WelcomeMessage, _configuration.Guild, _configuration.GuildRecruitmentURL));
             };
 
             Client.MessageReceived += async (s, e) =>
@@ -68,6 +67,9 @@ namespace FenixBot
                                 break;
                             case "!lockouts":
                                 await _lockoutLogic.Handle(e);
+                                break;
+                            case "!version":
+                                await e.Channel.SendMessage(VersionHelper.GetFullAssemblyVersion());
                                 break;
                             default:
                                 break;
